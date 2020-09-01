@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { Container } from '@material-ui/core';
 import Hidden from '@material-ui/core/Hidden';
-import './style.module.scss';
+import './style.scss';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -172,10 +172,10 @@ export default function CenteredGrid() {
                             <Grid item md={2} >
                                 <p style={{ textAlign: 'center' }} className={classes.text_title}>MOBILE APP</p>
                                 <div style={{ textAlign: 'center' }}>
-                                    <a target="_blank" href="https://apps.apple.com/vn/app/tix-%C4%91%E1%BA%B7t-v%C3%A9-nhanh-nh%E1%BA%A5t/id615186197">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/vn/app/tix-%C4%91%E1%BA%B7t-v%C3%A9-nhanh-nh%E1%BA%A5t/id615186197">
                                         <img style={{ margin: '15px 5px' }} height='30px' src="./img/footer/apple-logo.png" alt="apple" />
                                     </a>
-                                    <a target="_blank" href="https://play.google.com/store/apps/details?id=vn.com.vng.phim123">
+                                    <a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=vn.com.vng.phim123">
                                         <img style={{ margin: '15px 5px' }} height='30px' src="./img/footer/android-logo.png" alt="android" />
                                     </a>
                                 </div>
@@ -186,10 +186,10 @@ export default function CenteredGrid() {
                                 <p style={{ textAlign: 'center' }} className={classes.text_title}>SOCIAL</p>
                             </Hidden>
                             <div className="text" style={{ textAlign: 'center' }}>
-                                <a target="_blank" href="https://www.facebook.com/tix.vn/">
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/tix.vn/">
                                     <img style={{ margin: '15px 5px' }} height='30px' src="./img/footer/facebook-logo.png" alt="facebook" />
                                 </a>
-                                <a target="_blank" href="https://zalo.me/tixdatve">
+                                <a target="_blank" rel="noopener noreferrer" href="https://zalo.me/tixdatve">
                                     <img style={{ margin: '15px 5px' }} height='30px' src="./img/footer/zalo-logo.png" alt="zalo" />
                                 </a>
                             </div>

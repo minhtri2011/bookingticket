@@ -7,8 +7,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuIcon from '@material-ui/icons/Menu';
-import './style.module.scss';
-
+import { Link } from 'react-router-dom';
+import './style.scss';
+import { useSelector } from 'react-redux';
 const useStyles = makeStyles((theme) => ({
     button_mid: {
         fontSize: '14px',
@@ -47,15 +48,38 @@ const useStyles = makeStyles((theme) => ({
             display: 'flex',
         },
     },
+    menuMid: {
+        position: 'absolute',
+        left: '50%',
+        transform: 'translateX(-50%)',
+    },
+    menuRight: {
+        position: 'absolute',
+        right: '2rem',
+    },
     sectionMobile: {
         display: 'flex',
         [theme.breakpoints.up('md')]: {
             display: 'none',
         },
     },
+    textlink: {
+        textDecoration: 'none',
+        color: '#9B9B9B',
+        fontSize: '14px',
+        display: 'flex',
+        alignItems: 'center',
+    }
 }));
+export default function Header(props) {
 
-export default function Header() {
+    const taiKhoan = useSelector((state) => state.userReducer.taiKhoan);
+    const renderUserName = () => {
+        if (taiKhoan !== "") {
+            return <span>{taiKhoan}</span>
+        }
+        return <span>Đăng nhập</span>
+    }
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -156,12 +180,12 @@ export default function Header() {
     );
     return (
         <div className={classes.grow}>
-            <AppBar position="static" style={{ backgroundColor: 'rgba(255,255,255,.95)' }}>
-                <Toolbar style={{ justifyContent: 'space-between' }}>
-                    <IconButton style={{ padding: '0' }}>
+            <AppBar position="static" className="appBar">
+                <Toolbar className="toolBar">
+                    <IconButton className="logo">
                         <img src="./img/web-logo.png" alt="weblogo" width="50px" />
                     </IconButton>
-                    <div className={classes.sectionDesktop} >
+                    <div className={classes.sectionDesktop + ' ' + classes.menuMid} >
                         <IconButton disableRipple className={classes.button_mid}>
                             Lịch chiếu
                             </IconButton>
@@ -175,7 +199,7 @@ export default function Header() {
                             Ứng dụng
                             </IconButton>
                     </div>
-                    <div className={classes.sectionDesktop}>
+                    <div className={classes.sectionDesktop + ' ' + classes.menuRight}>
                         <IconButton disableRipple
                             edge="end"
                             aria-label="account of current user"
@@ -183,8 +207,12 @@ export default function Header() {
                             aria-haspopup="true"
                             className={classes.button_right}
                         >
-                            <AccountCircle style={{ fontSize: '30px', paddingRight: '5px' }} />
-                            Đăng nhập
+                            <Link className={classes.textlink} to="/login">
+                                <span>
+                                    <AccountCircle style={{ fontSize: '30px', paddingRight: '5px' }} />
+                                </span>
+                                {renderUserName()}
+                            </Link>
                         </IconButton>
                     </div>
                     <div className={classes.sectionMobile}>

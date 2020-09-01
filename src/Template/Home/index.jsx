@@ -1,14 +1,22 @@
-import React, {Fragment} from 'react'
-// import { Route, NavLink } from 'react-router-dom';
-// import { useSelector } from 'react-redux'
+import React, { Fragment} from 'react'
+import { Route } from 'react-router-dom';
 import Header from '../../Layout/Header'
 import Footer from '../../Layout/Footer'
-export default function index() {
+const HomeLayout = (props) => {
     return (
         <Fragment>
             <Header/>
-
-            <Footer/>
+            {props.children}
+            <Footer />
         </Fragment>
     )
 }
+export const HomeTemplate = (props) => {
+    return <Route path={props.path} {...props.exact} render={(propsComponent) => {
+        return (
+            <HomeLayout>
+                <props.component {...propsComponent} />
+            </HomeLayout>
+        )
+    }} />
+} 

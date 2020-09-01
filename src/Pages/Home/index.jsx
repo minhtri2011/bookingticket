@@ -1,10 +1,13 @@
 import React from 'react'
-import {homeCarousel} from '../../Component/homeCarousel'
-export default function index() {
+import HomeCarousel from '../../Component/homeCarousel'
+import HomeListMovie from '../../Component/homeListMovie'
+import HomeShowTime from '../../Component/homeShowTime'
+export default function Home() {
     return (
         <div>
-            home
-            <homeCarousel/>
+            {/* <HomeCarousel/>
+            <HomeListMovie/> */}
+            <HomeShowTime/>
         </div>
     )
 }

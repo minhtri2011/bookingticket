@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import './style.scss';
 import { token, userLogin } from '../../Config/setting';
 import { userServices } from '../../Services/user';
-import {Link} from 'react-router-dom';
 import {LoginAction} from '../../redux/action/user';
 export default function Login(props) {
 
@@ -33,8 +32,8 @@ export default function Login(props) {
     const handleSubmit=(event)=>{
         event.preventDefault();
         userServices.signIn(state.values).then(res=>{
-            localStorage.setItem('userLogin',JSON.stringify(res.data));
-            localStorage.setItem('token',res.data.accessToken);
+            localStorage.setItem(userLogin,JSON.stringify(res.data));
+            localStorage.setItem(token,res.data.accessToken);
             dispatch(LoginAction(res.data.taiKhoan));
             props.history.replace('/');
         }).catch(err=>{
@@ -46,7 +45,7 @@ export default function Login(props) {
     return (
         <div className="bodyLogin">
             <form className="form">
-                <h1>Đăng nhập</h1>
+                <h1>Đăng ký</h1>
                 <div className="input_box">
                     <input onChange={handleChangeInput} placeholder="Nhập tài khoản" type="text" name="taiKhoan" id="taikhoan" />
                     <label htmlFor='taikhoan'>Tên đăng nhập</label>
@@ -58,7 +57,7 @@ export default function Login(props) {
                 </div>
                 <span></span>
                 <button onClick={handleSubmit} >Đăng nhập</button>
-                <p><Link className="text_link" to="/registry">Đăng kí</Link> nếu chưa có tài khoản</p>
+                <p><a href="@">Đăng kí</a> nếu chưa có tài khoản</p>
             </form>
         </div>
     )
