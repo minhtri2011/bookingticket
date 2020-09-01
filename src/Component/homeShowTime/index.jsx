@@ -19,27 +19,45 @@ export default function HomeShowTime() {
     return (
         <div className="showTime">
             <Tabs
-                defaultTab="one"
-                onChange={(tabId) => { console.log(tabId) }}
+                defaultTab="BHDStar"
+                onChange={(tabId) => { }}
             >
                 <Grid container spacing={3}>
-                    <Grid item xs={6}>
+                    <Grid item xs={1}>
                         <TabList>
-                            <Tab tabFor="one">Tab 1</Tab>
-                            <Tab tabFor="2">Tab 2</Tab>
-                            <Tab tabFor="three">Tab 3</Tab>
+                            {movie.map((cinema, index) => {
+                                return <Tab tabFor={cinema.maHeThongRap} >{cinema.maHeThongRap}</Tab>
+                            })}
                         </TabList>
                     </Grid>
-                    <Grid item xs={6}>
-                        <TabPanel tabId="2">
-                            <p>Tab 1 content</p>
-                        </TabPanel>
-                        <TabPanel tabId="2">
-                            <p>Tab 2 content</p>
-                        </TabPanel>
-                        <TabPanel tabId="three">
-                            <p>Tab 3 content</p>
-                        </TabPanel>
+                    <Grid item xs={11}>
+                        {movie.map((cinema, index) => {
+                            return (
+                                <TabPanel tabId={cinema.maHeThongRap}>
+                                    <Tabs
+                                        onChange={(tabId) => { }}>
+                                        <Grid container spacing={3}>
+                                            <Grid item xs={6}>
+                                                <TabList>
+                                                    {cinema.lstCumRap.map((branch, index) => {
+                                                        return <Tab key={index} tabFor={branch.maCumRap}>{branch.tenCumRap}</Tab>
+                                                    })}
+                                                </TabList>
+                                            </Grid>
+                                            <Grid item xs={6}>
+                                                {cinema.lstCumRap.map((branch, index) => {
+                                                    return <TabPanel key={index} tabId={branch.maCumRap}>
+                                                        {branch.danhSachPhim.map((listMovie, index) => {
+                                                            return <div>{listMovie.tenPhim}</div>
+                                                        })}
+                                                    </TabPanel>
+                                                })}
+                                            </Grid>
+                                        </Grid>
+                                    </Tabs>
+                                </TabPanel>
+                            )
+                        })}
                     </Grid>
                 </Grid>
             </Tabs>
