@@ -5,8 +5,8 @@ import HomeShowTime from '../../Component/homeShowTime'
 export default function Home() {
     return (
         <div>
-            {/* <HomeCarousel/>
-            <HomeListMovie/> */}
+            <HomeCarousel/>
+            <HomeListMovie/>
             <HomeShowTime/>
         </div>
     )
