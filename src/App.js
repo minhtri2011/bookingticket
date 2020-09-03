@@ -14,8 +14,8 @@ function App() {
         <Switch>
           <Route exact path="/login" component={Login} />
           <Route exact path="/registry" component={Registry} />
-          <HomeTemplate exact path="/" component={MovieDetail} />
-          <HomeTemplate exact path="/moviedetail" component={MovieDetail} />
+          <HomeTemplate exact path="/" component={Home} />
+          <HomeTemplate exact path="/moviedetail/:id" component={MovieDetail} />
         </Switch>
       </Fragment>
     </BrowserRouter>

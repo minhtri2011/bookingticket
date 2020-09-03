@@ -20,13 +20,17 @@ export class Movie {
             url:`${domain}/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${id}`
         })
     }
-    
+    getMovieDetail=(id)=>{
+        return axios({
+            method:'GET',
+            url:`${domain}/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`
+        })
+    }
     getMovieSchedule=()=>{
         return axios({
             method:'GET',
             url:`${domain}/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${groupID}`
         })
     }
-
 }
 export const movieServices= new Movie ();

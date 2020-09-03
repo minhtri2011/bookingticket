@@ -3,7 +3,7 @@ import { movieServices } from '../../Services/movie';
 import Grid from '@material-ui/core/Grid';
 import './style.scss';
 import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import Moment from 'react-moment'
 
 export default function HomeShowTime() {
@@ -49,10 +49,12 @@ export default function HomeShowTime() {
                                                 <Grid className="miniLeft" item xs={4}>
                                                     <TabList>
                                                         {cinema.lstCumRap.map((branch, index) => {
-                                                            return <Tab key={index} tabFor={branch.maCumRap}>
+                                                            return <Tab style={{display:'flex'}} key={index} tabFor={branch.maCumRap}>
+                                                                <img style={{width:'3rem'}} src="/img/bhd-star-bitexco-15379520642437.jpg" alt="bhd-star-bitexco-15379520642437.jpg"/>
+                                                                <div style={{width:'100%', paddingLeft:'5px'}}>
                                                                 <p className="nameBranch">{branch.tenCumRap}</p>
                                                                 <p className="address">{branch.diaChi}</p>
-                                                                <Link className="link" to="/">[chi tiết]</Link>
+                                                                </div>
                                                             </Tab>
                                                         })}
                                                     </TabList>

@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-
+import Fade from '@material-ui/core/Fade';
 const useStyles = makeStyles((theme) => ({
     modal: {
         display: 'flex',
@@ -45,7 +45,7 @@ const SimpleSlider = props => {
         slidesToScroll: 1,
         arrows: true,
         autoplay: true,
-        autoplaySpeed: 5000,
+        autoplaySpeed: 7000,
         rows: 1,
         NextDotClassName: 'next',
         nextArrow: <SampleNextArrow />,
@@ -134,7 +134,9 @@ const SimpleSlider = props => {
                 BackdropProps={{
                     timeout: 200,
                 }}>
-                <iframe title="iframe" width="560" height="315" src={state} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <Fade in={open}>
+                    <iframe title="iframe" width="960" height="515" src={state} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                </Fade>
             </Modal>
         </>
     );

@@ -14,6 +14,8 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import Moment from 'react-moment';
+import Fade from '@material-ui/core/Fade';
+import { Link } from 'react-router-dom';
 import './style.scss';
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -148,7 +150,7 @@ export default function HomeListMovie() {
                                 </div>
                             </div>
                             <div className="btn-ticket">
-                                <button>Mua vé</button>
+                                <Link to={`/moviedetail/${movie.maPhim}`}><button>Mua vé</button></Link>
                             </div>
                         </div>
                     </div>
@@ -182,7 +184,7 @@ export default function HomeListMovie() {
                             <span>{renderDanhGia(movie.danhGia)}</span>
                         </div>
                         <div className="btn-ticket">
-                            <button>Mua vé</button>
+                            <Link to={`/moviedetail/${movie.maPhim}`}><button>Mua vé</button></Link>
                         </div>
                     </div>
                 )
@@ -232,7 +234,9 @@ export default function HomeListMovie() {
                 BackdropProps={{
                     timeout: 200,
                 }}>
-                <iframe width="560" height="315" src={state} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                <Fade in={open}>
+                    <iframe width="960" height="515" src={state} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                </Fade>
             </Modal>
         </>
     );

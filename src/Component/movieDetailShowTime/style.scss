@@ -1,0 +1,78 @@
+.movieShowTime {
+  margin: 100px auto;
+  width: 60%;
+  border: 1px solid rgb(228, 228, 228);
+  height: 400px;
+  .MuiGrid-container {
+    .miniLeft {
+      overflow-y: auto;
+      height: 400px;
+      padding: 0;
+      border-left: 1px solid rgb(228, 228, 228);
+      text-align: center;
+      button {
+        margin: 10px 0;
+        padding-bottom: 10px;
+        background-color: transparent;
+        text-align: left;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid rgb(228, 228, 228);
+        width: 80%;
+        cursor: pointer;
+        opacity: 0.5;
+        transition: all 0.2s;
+        -webkit-transition: all 0.2s;
+        -moz-transition: all 0.2s;
+        -ms-transition: all 0.2s;
+        -o-transition: all 0.2s;
+        &:hover {
+          opacity: 1;
+        }
+        &:focus {
+          opacity: 1;
+        }
+        .btnMovie {
+          display: flex;
+          align-items: center;
+
+          img {
+            margin-right: 10px;
+            width: 3rem;
+          }
+          p {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+    .miniRight {
+      padding: 0;
+      border-left: 1px solid rgb(219, 219, 219);
+      overflow-y: auto;
+      height: 400px;
+      p {
+        font-size: 1.5rem;
+        padding: 20px;
+        font-weight: 400;
+        color: rgb(255, 0, 0);
+      }
+      button.time {
+        outline: none;
+        border: 1px solid #e4e4e4;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+        background-color: rgba(246, 246, 246, 0.5);
+        padding: 10px 15px;
+        margin: 5px;
+        .timeItem {
+          text-decoration: none;
+          color: Black;
+        }
+      }
+    }
+  }
+}

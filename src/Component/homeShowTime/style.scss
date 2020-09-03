@@ -72,9 +72,11 @@
           .nameMovie{
             display: flex;
             // justify-content: center;
+            margin:10px;
             align-items: center;
             h5{
               padding-left: 10px;
+              font-size: 1.1rem;
             }
           }
           .time {

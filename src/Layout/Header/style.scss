@@ -6,6 +6,9 @@
         .logo{
             position: absolute;
             left: 1rem;
+            &:hover{
+                background-color: transparent !important;
+            }
         }
     }
 }

@@ -99,70 +99,70 @@ export default function CenteredGrid() {
                                 <div className={classes.listlogo}>
                                     <div>
                                         <a target="_blank" rel="noopener noreferrer" href="https://www.cgv.vn/">
-                                            <img className={classes.imglogo} src="./img/footer/cgv.png" alt="CGV" />
+                                            <img className={classes.imglogo} src="/img/footer/cgv.png" alt="CGV" />
                                         </a>
                                         <a target="_blank" rel="noopener noreferrer" href="https://www.bhdstar.vn/">
-                                            <img className={classes.imglogo} src="./img/footer/bhd.png" alt="BHD" />
+                                            <img className={classes.imglogo} src="/img/footer/bhd.png" alt="BHD" />
                                         </a>
                                         <a target="_blank" rel="noopener noreferrer" href="https://www.galaxycine.vn/">
-                                            <img className={classes.imglogo} src="./img/footer/galaxycine.png" alt="GALAXY" />
+                                            <img className={classes.imglogo} src="/img/footer/galaxycine.png" alt="GALAXY" />
                                         </a>
                                         <a target="_blank" rel="noopener noreferrer" href="http://cinestar.com.vn/">
-                                            <img className={classes.imglogo} src="./img/footer/cinestar.png" alt="CINESTAR" />
+                                            <img className={classes.imglogo} src="/img/footer/cinestar.png" alt="CINESTAR" />
                                         </a>
                                         <a target="_blank" rel="noopener noreferrer" href="http://lottecinemavn.com/LCHS/index.aspx">
-                                            <img className={classes.imglogo} src="./img/footer/lotte.png" alt="LOTTE" />
+                                            <img className={classes.imglogo} src="/img/footer/lotte.png" alt="LOTTE" />
                                         </a>
                                     </div>
                                     <div>
                                         <a target="_blank" rel="noopener noreferrer" href="https://www.megagscinemas.vn/">
-                                            <img className={classes.imglogo} src="./img/footer/megags.png" alt="MEGAS" />
+                                            <img className={classes.imglogo} src="/img/footer/megags.png" alt="MEGAS" />
                                         </a>
                                         <a target="_blank" rel="noopener noreferrer" href="https://www.betacineplex.vn/home.htm">
-                                            <img className={classes.imglogo} src="./img/footer/bt.jpg" alt="bt" />
+                                            <img className={classes.imglogo} src="/img/footer/bt.jpg" alt="bt" />
                                         </a>
                                         <a target="_blank" rel="noopener noreferrer" href="http://ddcinema.vn/">
-                                            <img className={classes.imglogo} src="./img/footer/dongdacinema.png" alt="ddc" />
+                                            <img className={classes.imglogo} src="/img/footer/dongdacinema.png" alt="ddc" />
                                         </a>
                                         <a target="_blank" rel="noopener noreferrer" href="https://touchcinema.com/">
-                                            <img className={classes.imglogo} src="./img/footer/TOUCH.png" alt="TOUCH" />
+                                            <img className={classes.imglogo} src="/img/footer/TOUCH.png" alt="TOUCH" />
                                         </a>
                                         <a target="_blank" rel="noopener noreferrer" href="https://cinemaxvn.com/">
-                                            <img className={classes.imglogo} src="./img/footer/cnx.jpg" alt="CNX" />
+                                            <img className={classes.imglogo} src="/img/footer/cnx.jpg" alt="CNX" />
                                         </a>
                                     </div>
                                     <div>
                                         <a target="_blank" rel="noopener noreferrer" href="https://starlight.vn/">
-                                            <img className={classes.imglogo} src="./img/footer/STARLIGHT.png" alt="STARLIGHT" />
+                                            <img className={classes.imglogo} src="/img/footer/STARLIGHT.png" alt="STARLIGHT" />
                                         </a>
                                         <a target="_blank" rel="noopener noreferrer" href="https://www.dcine.vn/">
-                                            <img className={classes.imglogo} src="./img/footer/dcine.png" alt="DCINE" />
+                                            <img className={classes.imglogo} src="/img/footer/dcine.png" alt="DCINE" />
                                         </a>
                                         <a target="_blank" rel="noopener noreferrer" href="https://zalopay.vn/">
-                                            <img className={classes.imglogo} src="./img/footer/zalopay_icon.png" alt="ZALO" />
+                                            <img className={classes.imglogo} src="/img/footer/zalopay_icon.png" alt="ZALO" />
                                         </a>
                                         <a target="_blank" rel="noopener noreferrer" href="https://www.payoo.vn/">
-                                            <img className={classes.imglogo} src="./img/footer/payoo.jpg" alt="PAYOO" />
+                                            <img className={classes.imglogo} src="/img/footer/payoo.jpg" alt="PAYOO" />
                                         </a>
                                         <a target="_blank" rel="noopener noreferrer" href="https://www.vietcombank.com.vn/">
-                                            <img className={classes.imglogo} src="./img/footer/VCB.png" alt="VCB" />
+                                            <img className={classes.imglogo} src="/img/footer/VCB.png" alt="VCB" />
                                         </a>
                                     </div>
                                     <div>
                                         <a target="_blank" rel="noopener noreferrer" href="https://www.agribank.com.vn/">
-                                            <img className={classes.imglogo} src="./img/footer/AGRIBANK.png" alt="AGRIBANK" />
+                                            <img className={classes.imglogo} src="/img/footer/AGRIBANK.png" alt="AGRIBANK" />
                                         </a>
                                         <a target="_blank" rel="noopener noreferrer" href="https://www.vietinbank.vn/">
-                                            <img className={classes.imglogo} src="./img/footer/VIETTINBANK.png" alt="VIETTINBANK" />
+                                            <img className={classes.imglogo} src="/img/footer/VIETTINBANK.png" alt="VIETTINBANK" />
                                         </a>
                                         <a target="_blank" rel="noopener noreferrer" href="https://www.indovinabank.com.vn/">
-                                            <img className={classes.imglogo} src="./img/footer/IVB.png" alt="IVB" />
+                                            <img className={classes.imglogo} src="/img/footer/IVB.png" alt="IVB" />
                                         </a>
                                         <a target="_blank" rel="noopener noreferrer" href="https://webv3.123go.vn/">
-                                            <img className={classes.imglogo} src="./img/footer/123go.png" alt="123go" />
+                                            <img className={classes.imglogo} src="/img/footer/123go.png" alt="123go" />
                                         </a>
                                         <a target="_blank" rel="noopener noreferrer" href="https://laban.vn/">
-                                            <img className={classes.imglogo} src="./img/footer/laban.png" alt="LABAN" />
+                                            <img className={classes.imglogo} src="/img/footer/laban.png" alt="LABAN" />
                                         </a>
                                     </div>
                                 </div>
@@ -173,10 +173,10 @@ export default function CenteredGrid() {
                                 <p style={{ textAlign: 'center' }} className={classes.text_title}>MOBILE APP</p>
                                 <div style={{ textAlign: 'center' }}>
                                     <a target="_blank" rel="noopener noreferrer" href="https://apps.apple.com/vn/app/tix-%C4%91%E1%BA%B7t-v%C3%A9-nhanh-nh%E1%BA%A5t/id615186197">
-                                        <img style={{ margin: '15px 5px' }} height='30px' src="./img/footer/apple-logo.png" alt="apple" />
+                                        <img style={{ margin: '15px 5px' }} height='30px' src="/img/footer/apple-logo.png" alt="apple" />
                                     </a>
                                     <a target="_blank" rel="noopener noreferrer" href="https://play.google.com/store/apps/details?id=vn.com.vng.phim123">
-                                        <img style={{ margin: '15px 5px' }} height='30px' src="./img/footer/android-logo.png" alt="android" />
+                                        <img style={{ margin: '15px 5px' }} height='30px' src="/img/footer/android-logo.png" alt="android" />
                                     </a>
                                 </div>
                             </Grid>
@@ -187,10 +187,10 @@ export default function CenteredGrid() {
                             </Hidden>
                             <div className="text" style={{ textAlign: 'center' }}>
                                 <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/tix.vn/">
-                                    <img style={{ margin: '15px 5px' }} height='30px' src="./img/footer/facebook-logo.png" alt="facebook" />
+                                    <img style={{ margin: '15px 5px' }} height='30px' src="/img/footer/facebook-logo.png" alt="facebook" />
                                 </a>
                                 <a target="_blank" rel="noopener noreferrer" href="https://zalo.me/tixdatve">
-                                    <img style={{ margin: '15px 5px' }} height='30px' src="./img/footer/zalo-logo.png" alt="zalo" />
+                                    <img style={{ margin: '15px 5px' }} height='30px' src="/img/footer/zalo-logo.png" alt="zalo" />
                                 </a>
                             </div>
                         </Grid>
@@ -198,7 +198,7 @@ export default function CenteredGrid() {
                     <hr className={classes.hr} />
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm={2}>
-                            <img width="90px" style={{ margin: '0 auto', display: 'flex', borderRadius: '10px' }} src="./img/footer/zion-logo.jpg" alt="zion" />
+                            <img width="90px" style={{ margin: '0 auto', display: 'flex', borderRadius: '10px' }} src="/img/footer/zion-logo.jpg" alt="zion" />
                         </Grid>
                         <Grid item xs={12} sm={8} className={classes.text}>
                             <span className={classes.text_title}>TIX – SẢN PHẨM CỦA CÔNG TY CỔ PHẦN ZION</span>
@@ -209,7 +209,7 @@ export default function CenteredGrid() {
                             <span className={classes.text_content}>Email: support@tix.vn</span>
                         </Grid>
                         <Grid item xs={12} sm={2}>
-                            <img style={{ margin: '0 auto', display: 'flex' }} width="100px" src="./img/footer/tb.png" alt="tb" />
+                            <img style={{ margin: '0 auto', display: 'flex' }} width="100px" src="/img/footer/tb.png" alt="tb" />
                         </Grid>
                     </Grid>
                 </div>

@@ -183,7 +183,7 @@ export default function Header(props) {
             <AppBar position="static" className="appBar">
                 <Toolbar className="toolBar">
                     <IconButton className="logo">
-                        <img src="./img/web-logo.png" alt="weblogo" width="50px" />
+                        <Link to="/"><img src="/img/web-logo.png" alt="weblogo" width="50px" /></Link>
                     </IconButton>
                     <div className={classes.sectionDesktop + ' ' + classes.menuMid} >
                         <IconButton disableRipple className={classes.button_mid}>
