@@ -20,6 +20,12 @@ export class Movie {
             url:`${domain}/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${id}`
         })
     }
+    getBooking=(id)=>{
+        return axios({
+            method:'GET',
+            url:`${domain}/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${id}`
+        })
+    }
     getMovieDetail=(id)=>{
         return axios({
             method:'GET',

@@ -3,7 +3,6 @@ import { movieServices } from '../../Services/movie';
 import Grid from '@material-ui/core/Grid';
 import './style.scss';
 import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs';
-// import { Link } from 'react-router-dom';
 import Moment from 'react-moment'
 
 export default function HomeShowTime() {
@@ -28,6 +27,7 @@ export default function HomeShowTime() {
             <Tabs
                 defaultTab="BHDStar"
                 onChange={(tabId) => { }}
+                vertical
             >
                 <Grid container spacing={0}>
                     <Grid item xs={2}>
@@ -41,7 +41,7 @@ export default function HomeShowTime() {
                     <Grid item xs={10}>
                         {movie.map((cinema, index) => {
                             return (
-                                <TabPanel tabId={cinema.maHeThongRap}>
+                                <TabPanel key={index} tabId={cinema.maHeThongRap}>
                                     <div className="miniShowTime">
                                         <Tabs
                                             onChange={(tabId) => { }}>
@@ -49,11 +49,11 @@ export default function HomeShowTime() {
                                                 <Grid className="miniLeft" item xs={4}>
                                                     <TabList>
                                                         {cinema.lstCumRap.map((branch, index) => {
-                                                            return <Tab style={{display:'flex'}} key={index} tabFor={branch.maCumRap}>
-                                                                <img style={{width:'3rem'}} src="/img/bhd-star-bitexco-15379520642437.jpg" alt="bhd-star-bitexco-15379520642437.jpg"/>
-                                                                <div style={{width:'100%', paddingLeft:'5px'}}>
-                                                                <p className="nameBranch">{branch.tenCumRap}</p>
-                                                                <p className="address">{branch.diaChi}</p>
+                                                            return <Tab style={{ display: 'flex' }} key={index} tabFor={branch.maCumRap}>
+                                                                <img style={{ width: '3rem' }} src="/img/bhd-star-bitexco-15379520642437.jpg" alt="bhd-star-bitexco-15379520642437.jpg" />
+                                                                <div style={{ width: '100%', paddingLeft: '5px' }}>
+                                                                    <p className="nameBranch">{branch.tenCumRap}</p>
+                                                                    <p className="address">{branch.diaChi}</p>
                                                                 </div>
                                                             </Tab>
                                                         })}
@@ -63,14 +63,16 @@ export default function HomeShowTime() {
                                                     {cinema.lstCumRap.map((branch, index) => {
                                                         return <TabPanel key={index} tabId={branch.maCumRap}>
                                                             {branch.danhSachPhim.map((listMovie, index) => {
-                                                                return <div>
+                                                                return <div key={index}>
                                                                     <div className="nameMovie">
                                                                         <img src={listMovie.hinhAnh} alt={listMovie.hinhAnh} width="50px" />
                                                                         <h5>{listMovie.tenPhim}</h5>
                                                                     </div>
                                                                     <div className="time">
                                                                         {listMovie.lstLichChieuTheoPhim.map((listTime, index) => {
-                                                                            return <div key={index} className="timeItem"><Moment format="DD/MM-hh:mm A">{listTime.ngayChieuGioChieu}</Moment></div>
+                                                                            return <a target="_blank" rel="noopener noreferrer" href={`/booking/${listTime.maLichChieu}`} key={index} className="timeItem">
+                                                                                <Moment format="DD/MM-hh:mm A">{listTime.ngayChieuGioChieu}</Moment>
+                                                                            </a>
                                                                         })}
                                                                     </div>
                                                                 </div>

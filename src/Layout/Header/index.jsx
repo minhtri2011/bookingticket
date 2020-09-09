@@ -10,6 +10,8 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from 'react-router-dom';
 import './style.scss';
 import { useSelector } from 'react-redux';
+// import { userLogin } from '../../Config/setting';
+// import { token, userLogin } from '../../Config/setting';
 const useStyles = makeStyles((theme) => ({
     button_mid: {
         fontSize: '14px',
@@ -72,13 +74,41 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 export default function Header(props) {
-
     const taiKhoan = useSelector((state) => state.userReducer.taiKhoan);
     const renderUserName = () => {
-        if (taiKhoan !== "") {
-            return <span>{taiKhoan}</span>
+        if (taiKhoan !== '') {
+            return (
+                <IconButton disableRipple
+                    edge="end"
+                    aria-label="account of current user"
+                    aria-controls={menuId}
+                    aria-haspopup="true"
+                    className={classes.button_right}
+                    onClick={handleProfileMenuOpen}
+                >
+                    <span className={classes.textlink}>
+                        <AccountCircle style={{ fontSize: '30px', paddingRight: '5px' }} />
+                    </span>
+                    <span>{taiKhoan}</span>
+                </IconButton>
+            )
+        } else {
+            return (
+                <IconButton disableRipple
+                    edge="end"
+                    aria-label="account of current user"
+                    aria-controls={menuId}
+                    aria-haspopup="true"
+                    className={classes.button_right}
+                >
+                    <Link className={classes.textlink} to="/login">
+                        <span>
+                            <AccountCircle style={{ fontSize: '30px', paddingRight: '5px' }} />
+                        </span>
+                        <span>Đăng nhập</span>
+                    </Link>
+                </IconButton>)
         }
-        return <span>Đăng nhập</span>
     }
     const classes = useStyles();
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -87,9 +117,9 @@ export default function Header(props) {
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-    // const handleProfileMenuOpen = (event) => {
-    //     setAnchorEl(event.currentTarget);
-    // };
+    const handleProfileMenuOpen = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
 
     const handleMobileMenuClose = () => {
         setMobileMoreAnchorEl(null);
@@ -115,9 +145,16 @@ export default function Header(props) {
             open={isMenuOpen}
             onClose={handleMenuClose}
         >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-        </Menu>
+            <div className="popupMenu">
+                <MenuItem onClick={handleMenuClose}>
+                    <Link to="/profile">Trang cá nhân</Link>
+                </MenuItem>
+                <MenuItem onClick={() => {
+                    localStorage.clear();
+                    window.location.reload();
+                }}>Đăng xuất</MenuItem>
+            </div>
+        </Menu >
     );
 
     const mobileMenuId = 'primary-search-account-menu-mobile';
@@ -200,20 +237,7 @@ export default function Header(props) {
                             </IconButton>
                     </div>
                     <div className={classes.sectionDesktop + ' ' + classes.menuRight}>
-                        <IconButton disableRipple
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-controls={menuId}
-                            aria-haspopup="true"
-                            className={classes.button_right}
-                        >
-                            <Link className={classes.textlink} to="/login">
-                                <span>
-                                    <AccountCircle style={{ fontSize: '30px', paddingRight: '5px' }} />
-                                </span>
-                                {renderUserName()}
-                            </Link>
-                        </IconButton>
+                        {renderUserName()}
                     </div>
                     <div className={classes.sectionMobile}>
                         <IconButton

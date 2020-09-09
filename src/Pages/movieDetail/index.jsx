@@ -19,9 +19,6 @@ export default function MovieDetail(props) {
         <div>
             <MovieDetailHeader movie={movie}/>
             <MovieDetailShowTime movie={movie}/>
-            {/* {movie.heThongRapChieu?.map((cine,index)=>{
-                return  <img className="cumRap__img" src={cine.logo} style={{ width: '35px', height: '35px' }} />
-            })} */}
         </div>
     )
 }

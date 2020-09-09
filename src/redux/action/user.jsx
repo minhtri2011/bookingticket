@@ -1,8 +1,8 @@
-import {DANG_NHAP} from './../types/types'
+import { DANG_NHAP} from './../types/types';
 
-export const LoginAction =(user)=>{
-    return{
-        type:DANG_NHAP,
+export const LoginAction = (user) => {
+    return {
+        type: DANG_NHAP,
         user
     }
 }

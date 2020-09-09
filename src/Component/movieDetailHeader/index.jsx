@@ -74,7 +74,7 @@ const MovieDetailHeader = (props) => {
                 }}
             >
                 <Fade in={open}>
-                    <iframe width="960" height="515" src={state} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" ></iframe>
+                    <iframe title="modal" width="960" height="515" src={state} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" ></iframe>
                 </Fade>
             </Modal>
         </div>

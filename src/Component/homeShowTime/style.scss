@@ -80,13 +80,14 @@
             }
           }
           .time {
-            cursor: pointer;
             display: flex;
             flex-wrap: wrap;
-            color: grey;
             font-weight: 600;
             .timeItem {
               background-color: rgba(246,246,246,.5);
+              text-decoration: none;
+              cursor: pointer;
+              color: grey;
               margin: 5px;
               padding: 8px;
               border: 1px solid #e4e4e4;

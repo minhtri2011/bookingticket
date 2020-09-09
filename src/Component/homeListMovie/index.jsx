@@ -113,18 +113,18 @@ export default function HomeListMovie() {
         let content = [];
         if (values > 5) {
             for (let i = 0; i < 5; i++) {
-                content.push(<StarIcon style={{ color: "yellow" }} />)
+                content.push(<StarIcon key={i} style={{ color: "yellow" }} />)
             }
         }
         else {
             for (let i = 0; i < values; i++) {
-                content.push(<StarIcon style={{ color: "yellow" }} />)
+                content.push(<StarIcon key={i} style={{ color: "yellow" }} />)
             }
         }
         return content;
     }
     const renderListMovie = () => {
-        return listMovie.map((movie, index) => {
+        return (listMovie.map((movie, index) => {
             if (movie.ngayKhoiChieu < dateTime) {
                 return (
                     <div key={index} className="card">
@@ -156,7 +156,7 @@ export default function HomeListMovie() {
                     </div>
                 )
             }
-        })
+        }))
     }
     const renderListNewMovie = () => {
         return listMovie.map((movie, index) => {
@@ -235,7 +235,7 @@ export default function HomeListMovie() {
                     timeout: 200,
                 }}>
                 <Fade in={open}>
-                    <iframe width="960" height="515" src={state} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                    <iframe width="960" height="515" src={state} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen title="modal"></iframe>
                 </Fade>
             </Modal>
         </>

@@ -1,7 +1,6 @@
 import React from 'react'
 import { memo } from 'react'
 import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs';
-import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Moment from 'react-moment';
 import './style.scss';
@@ -11,14 +10,15 @@ const MovieDetailShowTime = (props) => {
     return (
         <div className="movieShowTime">
             <Tabs
-                onChange={(tabId) => { }}>
+                onChange={(tabId) => { }}
+            >
                 <Grid container spacing={0}>
                     <Grid className="miniLeft" item xs={4}>
                         <TabList>
                             {movie.heThongRapChieu?.map((cinema, index) => {
                                 return <Tab key={index} tabFor={cinema.maHeThongRap}>
                                     <div className="btnMovie">
-                                        <img className="cumRap__img" src={cinema.logo} />
+                                        <img className="cumRap__img" src={cinema.logo} alt={cinema.logo} />
                                         <p>{cinema.tenHeThongRap}</p>
                                     </div>
                                 </Tab>
@@ -31,9 +31,11 @@ const MovieDetailShowTime = (props) => {
                                 {cinema.cumRapChieu.map((branch, index) => {
                                     return <div key={index}>
                                         <p>{branch.tenCumRap}</p>
-                                        {branch.lichChieuPhim.map((movieInfo, index) => {
-                                            return <button className="time"><Link className="timeItem" key={index} to="/"><Moment format="DD/MM-hh:mm A">{movieInfo.ngayChieuGioChieu}</Moment></Link></button>
-                                        })}
+                                        <div className="time">
+                                            {branch.lichChieuPhim.map((movieInfo, index) => {
+                                                return <a key={index} target="_blank" rel="noopener noreferrer" className="timeItem" href={`/booking/${movieInfo.maLichChieu}`}><Moment format="DD/MM-hh:mm A">{movieInfo.ngayChieuGioChieu}</Moment></a>
+                                            })}
+                                        </div>
                                     </div>
                                 })}
                             </TabPanel>

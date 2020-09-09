@@ -3,11 +3,11 @@ import { useDispatch } from 'react-redux';
 import './style.scss';
 import { token, userLogin } from '../../Config/setting';
 import { userServices } from '../../Services/user';
-import {Link} from 'react-router-dom';
-import {LoginAction} from '../../redux/action/user';
+import { Link } from 'react-router-dom';
+import { LoginAction} from '../../redux/action/user';
 export default function Login(props) {
 
-    const dispatch= useDispatch();
+    const dispatch = useDispatch();
     let [state, setState] = useState({
         values: {
             taiKhoan: '',
@@ -28,16 +28,16 @@ export default function Login(props) {
             ...state.errors,
             [name]: value === '' ? 'Không được bỏ trống' : ''
         }
-        setState({ values:newValue, errors:newErr})
+        setState({ values: newValue, errors: newErr })
     }
-    const handleSubmit=(event)=>{
+    const handleSubmit = (event) => {
         event.preventDefault();
-        userServices.signIn(state.values).then(res=>{
-            localStorage.setItem('userLogin',JSON.stringify(res.data));
-            localStorage.setItem('token',res.data.accessToken);
+        userServices.signIn(state.values).then(res => {
+            localStorage.setItem(userLogin, JSON.stringify(res.data));
+            localStorage.setItem(token, res.data.accessToken);
             dispatch(LoginAction(res.data.taiKhoan));
             props.history.replace('/');
-        }).catch(err=>{
+        }).catch(err => {
             console.log(err);
             alert('Sai tài khoản hoặc mật khẩu');
         })
@@ -45,7 +45,7 @@ export default function Login(props) {
 
     return (
         <div className="bodyLogin">
-            <form className="form">
+            <form className="form" onSubmit={handleSubmit}>
                 <h1>Đăng nhập</h1>
                 <div className="input_box">
                     <input onChange={handleChangeInput} placeholder="Nhập tài khoản" type="text" name="taiKhoan" id="taikhoan" />
@@ -57,7 +57,7 @@ export default function Login(props) {
                     <label htmlFor="matkhau">Mật khẩu</label>
                 </div>
                 <span></span>
-                <button onClick={handleSubmit} >Đăng nhập</button>
+                <button >Đăng nhập</button>
                 <p><Link className="text_link" to="/registry">Đăng kí</Link> nếu chưa có tài khoản</p>
             </form>
         </div>
