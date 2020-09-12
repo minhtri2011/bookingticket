@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Grow from '@material-ui/core/Grow';
+import Slide from '@material-ui/core/Slide';
 import { useState } from 'react';
 import { userServices } from '../../Services/user';
 import { userLogin } from '../../Config/setting';
@@ -68,6 +69,8 @@ export default function Profile() {
     const nameUser = {
         taiKhoan: getUserFromLocal
     }
+    let maLoaiNguoiDung = JSON.parse(localStorage.getItem(userLogin)).maLoaiNguoiDung;
+    let maNhom = JSON.parse(localStorage.getItem(userLogin)).maNhom;
     useEffect(() => {
         userServices.getUserInfo(nameUser).then(res => {
             setUser(res.data);
@@ -81,11 +84,26 @@ export default function Profile() {
     // modal
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
+    const [openInfo, setOpenInfo] = React.useState(false);
 
     const handleClose = () => {
         setOpen(false);
     };
-
+    const handleCloseInfo = () => {
+        setOpenInfo(false);
+    };
+    const update = () => {
+        let info = {
+            "taiKhoan": user.taiKhoan,
+            "matKhau": user.matKhau,
+            "email": user.email,
+            "soDt": user.soDT,
+            "maNhom": maNhom,
+            "maLoaiNguoiDung": maLoaiNguoiDung,
+            "hoTen": user.hoTen
+        }
+        console.log(info);
+    }
     return (
         <div className="profileTabs">
             <AppBar position="static">
@@ -104,7 +122,10 @@ export default function Profile() {
                     <div className="info_right">
                         <p>Tài khoản: {user.taiKhoan}</p>
                         <p>Mật khẩu: {user.matKhau}</p>
-                        <button className="btn_update">Cập nhật</button>
+                        <button className="btn_update" onClick={() => {
+                            setOpenInfo(true);
+                            update();
+                        }}>Cập nhật</button>
                     </div>
                 </div>
             </TabPanel>
@@ -143,6 +164,7 @@ export default function Profile() {
                     </tbody>
                 </table>
             </TabPanel>
+            {/* modal history */}
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
@@ -157,26 +179,59 @@ export default function Profile() {
             >
                 <Grow in={open}>
                     <div className={classes.modalPopup}>
-                        <table style={{ borderSpacing: '0 5px', width:'400px' }}>
+                        <table style={{ borderSpacing: '0 5px', width: '400px' }}>
                             <thead style={{ backgroundColor: 'rgb(255, 0, 55)' }}>
                                 <tr>
                                     <td style={{ padding: '10px 10px' }}>Tên hệ thống rạp</td>
-                                    <td style={{ padding: '10px 10px', textAlign:'center' }}>Tên ghế</td>
-                                    <td style={{ padding: '10px 10px', textAlign:'center' }}>Tên rạp</td>
+                                    <td style={{ padding: '10px 10px', textAlign: 'center' }}>Tên ghế</td>
+                                    <td style={{ padding: '10px 10px', textAlign: 'center' }}>Tên rạp</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 {listChair.map((chair, index) => {
                                     return <tr key={index}>
                                         <td>{chair.tenHeThongRap}</td>
-                                        <td style={{textAlign:'center'}}>{chair.tenRap}</td>
-                                        <td style={{textAlign:'center'}}>{chair.tenGhe}</td>
+                                        <td style={{ textAlign: 'center' }}>{chair.tenRap}</td>
+                                        <td style={{ textAlign: 'center' }}>{chair.tenGhe}</td>
                                     </tr>
                                 })}
                             </tbody>
                         </table>
                     </div>
                 </Grow>
+            </Modal>
+            {/* modal update info user */}
+            <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={openInfo}
+                onClose={handleCloseInfo}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
+            >
+                <Slide direction="up" in={openInfo}>
+                    <div className={classes.modalPopup}>
+                        <form>
+                            <h1>Cập nhật thông tin</h1>
+                            <label>Họ tên:</label><br></br>
+                            <input type="text" name="name" id="name" defaultValue={user.hoTen} /> <br></br>
+                            <label>Email:</label><br></br>
+                            <input type="email" name="email" id="email" defaultValue={user.email} /> <br></br>
+                            <label>Số điện thoại:</label><br></br>
+                            <input type="tel" name="sdt" id="sdt" defaultValue={user.soDT} /> <br></br>
+                            <label>Tài khoản:</label><br></br>
+                            <input type="text" name="user" id="user" defaultValue={user.taiKhoan} /> <br></br>
+                            <label>Mật khẩu:</label><br></br>
+                            <input type="password" name="password" id="password" defaultValue={user.matKhau} /> <br></br>
+                        </form>
+                        <button onClick={handleCloseInfo}>Huỷ</button>
+                        <button>Cập nhật</button>
+                    </div>
+                </Slide>
             </Modal>
         </div >
     );

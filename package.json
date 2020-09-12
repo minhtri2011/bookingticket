@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "custom-react-slick": "^0.14.11",
+    "formik": "^2.1.5",
     "history": "^5.0.0",
     "moment": "^2.27.0",
     "node-sass": "^4.14.1",
@@ -24,7 +25,8 @@
     "react-web-tabs": "^1.0.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "yup": "^0.29.3"
   },
   "scripts": {
     "start": "react-scripts start",

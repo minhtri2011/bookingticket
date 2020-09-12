@@ -4,7 +4,7 @@ import './style.scss';
 import { token, userLogin } from '../../Config/setting';
 import { userServices } from '../../Services/user';
 import { Link } from 'react-router-dom';
-import { LoginAction} from '../../redux/action/user';
+import { LoginAction } from '../../redux/action/user';
 export default function Login(props) {
 
     const dispatch = useDispatch();
@@ -51,12 +51,10 @@ export default function Login(props) {
                     <input onChange={handleChangeInput} placeholder="Nhập tài khoản" type="text" name="taiKhoan" id="taikhoan" />
                     <label htmlFor='taikhoan'>Tên đăng nhập</label>
                 </div>
-                <span></span>
                 <div className="input_box">
                     <input onChange={handleChangeInput} placeholder="Nhập mật khẩu" type="password" name="matKhau" id="matkhau" />
                     <label htmlFor="matkhau">Mật khẩu</label>
                 </div>
-                <span></span>
                 <button >Đăng nhập</button>
                 <p><Link className="text_link" to="/registry">Đăng kí</Link> nếu chưa có tài khoản</p>
             </form>

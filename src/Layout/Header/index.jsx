@@ -150,8 +150,9 @@ export default function Header(props) {
                     <Link to="/profile">Trang cá nhân</Link>
                 </MenuItem>
                 <MenuItem onClick={() => {
+                    // props.history.replace('/');
                     localStorage.clear();
-                    window.location.reload();
+                    window.location.replace('/');
                 }}>Đăng xuất</MenuItem>
             </div>
         </Menu >

@@ -1,64 +1,78 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import './style.scss';
-import { token, userLogin } from '../../Config/setting';
+import { Link } from 'react-router-dom';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as yup from 'yup';
 import { userServices } from '../../Services/user';
-import {LoginAction} from '../../redux/action/user';
-export default function Login(props) {
 
-    const dispatch= useDispatch();
-    let [state, setState] = useState({
-        values: {
-            taiKhoan: '',
-            matKhau: ''
-        },
-        errors: {
-            taiKhoan: '',
-            matKhau: ''
-        }
-    });
-    const handleChangeInput = (event) => {
-        let { value, name } = event.target;
-        let newValue = {
-            ...state.values,
-            [name]: value
-        }
-        let newErr = {
-            ...state.errors,
-            [name]: value === '' ? 'Không được bỏ trống' : ''
-        }
-        setState({ values:newValue, errors:newErr})
-    }
-    const handleSubmit=(event)=>{
-        event.preventDefault();
-        userServices.signIn(state.values).then(res=>{
-            localStorage.setItem(userLogin,JSON.stringify(res.data));
-            localStorage.setItem(token,res.data.accessToken);
-            dispatch(LoginAction(res.data.taiKhoan));
-            props.history.replace('/');
-        }).catch(err=>{
+export default function SignUp() {
+    const handleSubmit = (values) => {
+        console.log(values);
+        userServices.signUp(values).then(res => {
+            alert('ok')
+        }).catch(err => {
             console.log(err);
-            alert('Sai tài khoản hoặc mật khẩu');
         })
     }
-
+    const signUpUserSchema = yup.object().shape({
+        taiKhoan: yup.string().required("Không được bỏ trống!"),
+        matKhau: yup.string().required("Không được bỏ trống!"),
+        hoTen: yup.string().required("Không được bỏ trống!"),
+        email: yup.string().required("Không được bỏ trống!").email("emal không hợp lệ!"),
+        soDt: yup.string()
+            .required("Không được bỏ trống!")
+            .matches(/^[0-9]+$/, "Số điện thoại không hợp lệ")
+            .max(12, "vui lòng nhập bé hơn 12 số")
+            .min(8, "vui lòng nhập lớn hơn 8 số"),
+    })
     return (
-        <div className="bodyLogin">
-            <form className="form">
-                <h1>Đăng ký</h1>
-                <div className="input_box">
-                    <input onChange={handleChangeInput} placeholder="Nhập tài khoản" type="text" name="taiKhoan" id="taikhoan" />
-                    <label htmlFor='taikhoan'>Tên đăng nhập</label>
-                </div>
-                <span></span>
-                <div className="input_box">
-                    <input onChange={handleChangeInput} placeholder="Nhập mật khẩu" type="password" name="matKhau" id="matkhau" />
-                    <label htmlFor="matkhau">Mật khẩu</label>
-                </div>
-                <span></span>
-                <button onClick={handleSubmit} >Đăng nhập</button>
-                <p><a href="@">Đăng kí</a> nếu chưa có tài khoản</p>
-            </form>
+        <div className="bodyRegis">
+            <Formik
+                initialValues={{
+                    taiKhoan: "",
+                    matKhau: "",
+                    email: "",
+                    soDt: "",
+                    maNhom: "GP09",
+                    maLoaiNguoiDung: "KhachHang",
+                    hoTen: "",
+                }}
+                validationSchema={signUpUserSchema}
+                onSubmit={handleSubmit}>
+                {(formikProps) => (
+                    <Form className="form">
+                        <h1>Đăng ký</h1>
+                        <div className="input_box">
+                            <Field onChange={formikProps.handleChange} placeholder="Nhập tài khoản" type="text" name="taiKhoan" id="taiKKhoan" />
+                            <label htmlFor='taiKKhoan'>Tài khoản</label>
+                        </div>
+                        <ErrorMessage name="taiKhoan" render={(msg) => <div className="errText">{msg}</div>} />
+                        <div className="input_box">
+                            <Field onChange={formikProps.handleChange} placeholder="Nhập mật khẩu" type="password" name="matKhau" id="matKKhau" />
+                            <label htmlFor="matKKhau">Mật khẩu</label>
+                        </div>
+                        <ErrorMessage name="matKhau" render={(msg) => <div className="errText">{msg}</div>} />
+                        <div className="input_box">
+                            <Field onChange={formikProps.handleChange} placeholder="Nhập họ tên" type="text" name="hoTen" id="hoTen" />
+                            <label htmlFor="hoTen">Họ tên</label>
+                        </div>
+                        <ErrorMessage name="hoTen" render={(msg) => <div className="errText">{msg}</div>} />
+                        <div className="input_box">
+                            <Field onChange={formikProps.handleChange} placeholder="Nhập email" type="email" name="email" id="email" />
+                            <label htmlFor="email">Email</label>
+                        </div>
+                        <ErrorMessage name="email" render={(msg) => <div className="errText">{msg}</div>} />
+                        <div className="input_box">
+                            <Field onChange={formikProps.handleChange} placeholder="Nhập số điện thoại" type="tel" name="soDt" id="soDt" />
+                            <label htmlFor="soDt">Số điện thoại</label>
+                        </div>
+                        <ErrorMessage name="soDt" render={(msg) => <div className="errText">{msg}</div>} />
+
+                        <button type="submit">Đăng ký</button>
+                        <p><Link className="text_link" to="/login">Đăng nhập</Link> nếu bạn đã có tài khoản</p>
+                    </Form>
+                )}
+            </Formik>
         </div>
     )
 }
