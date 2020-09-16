@@ -69,8 +69,8 @@ export default function Profile() {
     const nameUser = {
         taiKhoan: getUserFromLocal
     }
-    let maLoaiNguoiDung = JSON.parse(localStorage.getItem(userLogin)).maLoaiNguoiDung;
-    let maNhom = JSON.parse(localStorage.getItem(userLogin)).maNhom;
+    // let maLoaiNguoiDung = JSON.parse(localStorage.getItem(userLogin)).maLoaiNguoiDung;
+    // let maNhom = JSON.parse(localStorage.getItem(userLogin)).maNhom;
     useEffect(() => {
         userServices.getUserInfo(nameUser).then(res => {
             setUser(res.data);
@@ -92,18 +92,17 @@ export default function Profile() {
     const handleCloseInfo = () => {
         setOpenInfo(false);
     };
-    const update = () => {
-        let info = {
-            "taiKhoan": user.taiKhoan,
-            "matKhau": user.matKhau,
-            "email": user.email,
-            "soDt": user.soDT,
-            "maNhom": maNhom,
-            "maLoaiNguoiDung": maLoaiNguoiDung,
-            "hoTen": user.hoTen
-        }
-        console.log(info);
-    }
+    // const update = () => {
+    //     let info = {
+    //         "taiKhoan": user.taiKhoan,
+    //         "matKhau": user.matKhau,
+    //         "email": user.email,
+    //         "soDt": user.soDT,
+    //         "maNhom": maNhom,
+    //         "maLoaiNguoiDung": maLoaiNguoiDung,
+    //         "hoTen": user.hoTen
+    //     }
+    // }
     return (
         <div className="profileTabs">
             <AppBar position="static">
@@ -124,7 +123,7 @@ export default function Profile() {
                         <p>Mật khẩu: {user.matKhau}</p>
                         <button className="btn_update" onClick={() => {
                             setOpenInfo(true);
-                            update();
+                            // update();
                         }}>Cập nhật</button>
                     </div>
                 </div>

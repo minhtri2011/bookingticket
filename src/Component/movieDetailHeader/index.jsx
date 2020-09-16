@@ -29,12 +29,12 @@ const MovieDetailHeader = (props) => {
         let content = [];
         if (values > 5) {
             for (let i = 0; i < 5; i++) {
-                content.push(<StarIcon style={{ color: "yellow" }} />)
+                content.push(<StarIcon key={i} style={{ color: "yellow" }} />)
             }
         }
         else {
             for (let i = 0; i < values; i++) {
-                content.push(<StarIcon style={{ color: "yellow" }} />)
+                content.push(<StarIcon key={i} style={{ color: "yellow" }} />)
             }
         }
         return content;

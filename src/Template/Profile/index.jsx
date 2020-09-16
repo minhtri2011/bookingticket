@@ -11,11 +11,9 @@ const ProfileLayout = (props) => {
     )
 }
 export const PropfileTemplate = props => {
-    return <Route path={props.path} {...props.exact} render={(propsComponent) => {
-        return (
-            <ProfileLayout>
-                <props.component {...propsComponent} />
-            </ProfileLayout>
-        )
-    }} />
+    return <Route path={props.path} {...props.exact} render={(propsComponent) => (
+        <ProfileLayout>
+            <props.component {...propsComponent} />
+        </ProfileLayout>
+    )} />
 }

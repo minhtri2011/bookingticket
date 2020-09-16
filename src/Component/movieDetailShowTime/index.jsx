@@ -11,6 +11,7 @@ const MovieDetailShowTime = (props) => {
         <div className="movieShowTime">
             <Tabs
                 onChange={(tabId) => { }}
+                vertical
             >
                 <Grid container spacing={0}>
                     <Grid className="miniLeft" item xs={4}>
@@ -23,6 +24,7 @@ const MovieDetailShowTime = (props) => {
                                     </div>
                                 </Tab>
                             })}
+                            <></>
                         </TabList>
                     </Grid>
                     <Grid className="miniRight" item xs={8}>

@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { domain, token } from '../Config/setting';
+import { domain, token, groupID } from '../Config/setting';
+
 
 export class Services {
     signIn = (user) => {
@@ -35,12 +36,47 @@ export class Services {
     }
     updateUser = (user) => {
         return axios({
-            url: `${domain}//QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+            url: `${domain}/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
             method: 'PUT',
             data: user,
             header: {
                 'Authorization': 'Bearer ' + localStorage.getItem(token),
             }
+        })
+    }
+    deleteUser = (user) => {
+        return axios({
+            url: `${domain}/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${user}`,
+            method: "DELETE",
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem(token),
+            }
+        })
+    }
+    addUser = (user) => {
+        return axios({
+            method: "POST",
+            url: `${domain}/QuanLyNguoiDung/ThemNguoiDung`,
+            data: user,
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem(token),
+            },
+        })
+    }
+    getListUser = () => {
+        return axios({
+            url: `${domain}/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${groupID}`,
+            method: 'GET'
+        })
+    }
+    editUser = (user) => {
+        return axios({
+            method: "PUT",
+            url:`${domain}/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+            data: user,
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem(token),
+            },
         })
     }
 }

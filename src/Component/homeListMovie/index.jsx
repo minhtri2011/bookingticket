@@ -124,8 +124,10 @@ export default function HomeListMovie() {
         return content;
     }
     const renderListMovie = () => {
-        return (listMovie.map((movie, index) => {
-            if (movie.ngayKhoiChieu < dateTime) {
+        return (listMovie
+            .filter(movie =>movie.ngayKhoiChieu < dateTime)
+            .map((movie, index) => {
+            // if (movie.ngayKhoiChieu < dateTime) {
                 return (
                     <div key={index} className="card">
                         <div className="imgMovie">
@@ -155,12 +157,14 @@ export default function HomeListMovie() {
                         </div>
                     </div>
                 )
-            }
+            
         }))
     }
     const renderListNewMovie = () => {
-        return listMovie.map((movie, index) => {
-            if (movie.ngayKhoiChieu > dateTime) {
+        return listMovie
+        .filter(movie=>movie.ngayKhoiChieu > dateTime)
+        .map((movie, index) => {
+            // if (movie.ngayKhoiChieu > dateTime) {
                 return (
                     <div key={index} className="card">
                         <div className="imgMovie">
@@ -188,7 +192,7 @@ export default function HomeListMovie() {
                         </div>
                     </div>
                 )
-            }
+            
         })
     }
     const handleChange = (event, newValue) => {

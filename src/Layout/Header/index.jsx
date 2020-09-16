@@ -195,25 +195,6 @@ export default function Header(props) {
                     Ứng dụng
             </IconButton>
             </MenuItem>
-            {/* <MenuItem>
-                <IconButton aria-label="show 11 new notifications" style={{ color: '#000000', fontSize: '14px' }}>
-                    <Badge badgeContent={11} color="secondary">
-                        <NotificationsIcon />
-                    </Badge>
-                </IconButton>
-                <p>Notifications</p>
-            </MenuItem> */}
-            {/* <MenuItem onClick={handleProfileMenuOpen}>
-                <IconButton
-                    aria-label="account of current user"
-                    aria-controls="primary-search-account-menu"
-                    aria-haspopup="true"
-                    style={{ color: '#000000', fontSize: '14px' }}
-                >
-                    <AccountCircle />
-                </IconButton>
-                <p>Profile</p>
-            </MenuItem> */}
         </Menu>
     );
     return (

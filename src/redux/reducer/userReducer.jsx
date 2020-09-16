@@ -1,9 +1,4 @@
 import { DANG_NHAP } from './../types/types';
-// let taiKhoan = '';
-// if (localStorage.getItem('userLogin')) {
-//     taiKhoan = JSON.parse(localStorage.getItem('userLogin')).taiKhoan;
-//     // console.log("taiKhoan");
-// }
 const initialState = {
     taiKhoan: ''
 }

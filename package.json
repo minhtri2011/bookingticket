@@ -12,6 +12,7 @@
     "custom-react-slick": "^0.14.11",
     "formik": "^2.1.5",
     "history": "^5.0.0",
+    "material-table": "^1.69.0",
     "moment": "^2.27.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
