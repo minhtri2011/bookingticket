@@ -132,8 +132,7 @@ export default function AdminMovie() {
         }
         movieServices.addMovie(form_data)
             .then(res => {
-                alert('Thêm phim thành công')
-                window.location.reload();
+                alert('Thêm phim thành công');
             })
             .catch(error => {
                 alert(error.response.data);
