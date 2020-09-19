@@ -8,13 +8,12 @@ import './style.scss';
 const MovieDetailShowTime = (props) => {
     let { movie } = props;
     return (
-        <div className="movieShowTime">
+        <div id="movieShowTime" className="movieShowTime">
             <Tabs
                 onChange={(tabId) => { }}
-                vertical
             >
                 <Grid container spacing={0}>
-                    <Grid className="miniLeft" item xs={4}>
+                    <Grid className="miniLeft" item sm={4} xs={12}>
                         <TabList>
                             {movie.heThongRapChieu?.map((cinema, index) => {
                                 return <Tab key={index} tabFor={cinema.maHeThongRap}>
@@ -27,7 +26,7 @@ const MovieDetailShowTime = (props) => {
                             <></>
                         </TabList>
                     </Grid>
-                    <Grid className="miniRight" item xs={8}>
+                    <Grid className="miniRight" item sm={8} xs={12}>
                         {movie.heThongRapChieu?.map((cinema, index) => {
                             return <TabPanel key={index} tabId={cinema.maHeThongRap}>
                                 {cinema.cumRapChieu.map((branch, index) => {

@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
 export default function CenteredGrid() {
     const classes = useStyles();
     return (
-        <div className={classes.root}>
+        <div id="footer" className={classes.root}>
             <Container maxWidth='lg'>
                 <div className={classes.footer} >
                     <Grid container spacing={3}>
@@ -84,10 +84,10 @@ export default function CenteredGrid() {
                                 <Grid item xs={12} sm={6}>
                                     <Grid container>
                                         <Grid sm={12} xs={6} item>
-                                            <a className={classes.text_content} style={{paddingTop: '10px' }} href="@">Thoả thuận sử dụng</a>
+                                            <a className={classes.text_content} style={{paddingTop: '10px'}} href="@">Thoả thuận sử dụng</a>
                                         </Grid>
                                         <Grid sm={12} xs={6} item>
-                                            <a className={classes.text_content} style={{paddingTop: '10px' }} href="@">Chính sách bảo mật</a>
+                                            <a className={classes.text_content} style={{paddingTop: '10px'}} href="@">Chính sách bảo mật</a>
                                         </Grid>
                                     </Grid>
                                 </Grid>

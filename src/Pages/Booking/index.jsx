@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { Fragment, useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { movieServices } from '../../Services/movie';
 import Grid from '@material-ui/core/Grid';
 import Countdown, { zeroPad } from 'react-countdown';
@@ -36,16 +36,16 @@ export default function Booking(props) {
     }, [])
     const renderListChair = () => {
         return movie.danhSachGhe?.map((chair, index) => {
-            return <Fragment key={index}>
+            return <div style={{ display: 'inline' }} key={index}>
                 {renderChair(chair.daDat, chair.loaiGhe, chair)}
                 {(index + 1) % 16 === 0 ? <br /> : ''}
-            </Fragment>
+            </div>
         })
     }
     const renderChair = (bookingChair, type, chair) => {
         if (type === 'Thuong') {
             if (bookingChair) {
-                return <button className="chair bookingChair" disabled>X</button>
+                return <button className="chair bookingChair" disabled><div className="sttChair">x</div></button>
             }
             else {
                 let cssBookingChair = '';
@@ -56,12 +56,12 @@ export default function Booking(props) {
                 return <button onClick={() => {
                     bookChair(chair);
                 }}
-                    className={`chair ${cssBookingChair}`}>{chair.stt}</button>
+                    className={`chair ${cssBookingChair}`}><div className="sttChair">{chair.stt}</div></button>
             }
         }
         else {
             if (bookingChair) {
-                return <button className="vipChair bookingVipChair" disabled>X</button>
+                return <button className="vipChair bookingVipChair" disabled><div className="sttChair">x</div></button>
             }
             else {
                 let cssBookingChair = '';
@@ -72,7 +72,7 @@ export default function Booking(props) {
                 return <button onClick={() => {
                     bookChair(chair);
                 }}
-                    className={`vipChair ${cssBookingChair}`}>{chair.stt}</button>
+                    className={`vipChair ${cssBookingChair}`}><div className="sttChair">{chair.stt}</div></button>
             }
         }
 
@@ -113,6 +113,9 @@ export default function Booking(props) {
     }
     const onComplete = () => {
         handleOpen();
+        setTimeout(() => {
+            props.history.replace('/');
+        }, 3600);
     }
     const dateNow = useMemo(() => Date.now(), [])
     const booking = () => {
@@ -132,7 +135,7 @@ export default function Booking(props) {
         <div className="booking_page">
             <div className="booking">
                 <Grid container spacing={0}>
-                    <Grid item xs={9}>
+                    <Grid item xs={12} md={9}>
                         <div className="renderChair">
                             <div className="headerRender">
                                 <div className="headerLeft">
@@ -141,11 +144,11 @@ export default function Booking(props) {
                                 </div>
                                 <div className="headerRight">
                                     <p>Thời gian giữ ghế:</p>
-                                    <p className="countDownNumber"><Countdown intervalDelay={0} renderer={renderTime} onComplete={onComplete} date={dateNow + 1200000}></Countdown></p>
+                                    <p className="countDownNumber"><Countdown intervalDelay={0} renderer={renderTime} onComplete={onComplete} date={dateNow + 120000}></Countdown></p>
                                 </div>
                             </div>
                             <img src="/img/screen.png" alt="" />
-                            <div>{renderListChair()}</div>
+                            <div className="renderListChair">{renderListChair()}</div>
                             <div className="seatCaption">
                                 <div className="normal_Chair"></div>
                                 <span>Ghế thường</span>
@@ -158,7 +161,7 @@ export default function Booking(props) {
                             </div>
                         </div>
                     </Grid>
-                    <Grid className="grid_right" item xs={3}>
+                    <Grid className="grid_right" item xs={12} md={3}>
                         <div className="movie_info">{renderMovie()}</div>
                         <button onClick={() => {
                             booking()

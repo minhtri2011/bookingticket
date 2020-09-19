@@ -56,7 +56,7 @@ const SimpleSlider = props => {
             <div
                 style={{
                     position: "absolute",
-                    bottom: "10px",
+                    bottom: ".5rem",
                     padding: "10px",
                 }}
             >
@@ -135,7 +135,7 @@ const SimpleSlider = props => {
                     timeout: 200,
                 }}>
                 <Fade in={open}>
-                    <iframe title="iframe" width="960" height="515" src={state} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                    <iframe title="iframe" width="560" height="315" src={state} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </Fade>
             </Modal>
         </>

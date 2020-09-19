@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { movieServices } from '../../Services/movie';
@@ -15,6 +14,9 @@ export default function MovieDetail(props) {
             console.log(err);
         })
     })
+    useEffect(() => {
+        window.scrollTo(0,0)
+    }, [])
     return (
         <div>
             <MovieDetailHeader movie={movie}/>

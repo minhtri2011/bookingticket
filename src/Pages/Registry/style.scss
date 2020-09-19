@@ -1,3 +1,4 @@
+@import'../../scss/main.scss';
 *, *:before, *:after{
     margin: 0;
     padding: 0;
@@ -139,4 +140,13 @@
       text-decoration: none;
     }
   }
+  }
+  @include mediaQueryMax(getBreakpoints("extra-small")){
+    .bodyRegis{
+      .form{
+        overflow-y: auto;
+        width: 100vw;
+        height: 100vh;
+      }
+    }
   }

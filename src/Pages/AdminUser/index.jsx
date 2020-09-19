@@ -133,6 +133,7 @@ export default function AdminUser() {
           new Promise((resolve) => {
             setTimeout(() => {
               resolve();
+              
               handleAddUser(newData);
               setState((prevState) => {
                 const data = [...prevState.data];

@@ -4,14 +4,51 @@ import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { userServices } from '../../Services/user';
+import Modal from '@material-ui/core/Modal';
+import { makeStyles } from '@material-ui/core/styles';
+import Backdrop from '@material-ui/core/Backdrop';
+import Fade from '@material-ui/core/Fade';
 
-export default function SignUp() {
+const useStyles = makeStyles((theme) => ({
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign:'center',
+    },
+    paper: {
+        backgroundColor: theme.palette.background.paper,
+        border: 'none !important',
+        outline:'none',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+        borderRadius:'10px',
+    },
+    title:{
+        textAlign:'center',
+        padding:'10px',
+    },
+    description:{
+        textAlign:'center',
+    },
+    button:{
+        padding:'7px 20px',
+        borderRadius:'10px',
+        backgroundColor:'orangered',
+        display:'inline-block',
+        fontSize:'1rem',
+        margin:' 10px auto 0 0',
+        border:'none',
+        outline:'none',
+        color:'white',
+    }
+}));
+export default function SignUp(props) {
     const handleSubmit = (values) => {
-        console.log(values);
         userServices.signUp(values).then(res => {
-            alert('ok')
+            props.history.replace('/login');
         }).catch(err => {
-            console.log(err);
+            handleOpen(err.response.data)
         })
     }
     const signUpUserSchema = yup.object().shape({
@@ -25,6 +62,18 @@ export default function SignUp() {
             .max(12, "vui lòng nhập bé hơn 12 số")
             .min(8, "vui lòng nhập lớn hơn 8 số"),
     })
+    // custom modal
+    const classes = useStyles();
+    const [open, setOpen] = React.useState(false);
+    const [err, setErr] = React.useState([]);
+    const handleOpen = (data) => {
+        setOpen(true);
+        setErr(data);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
     return (
         <div className="bodyRegis">
             <Formik
@@ -73,6 +122,26 @@ export default function SignUp() {
                     </Form>
                 )}
             </Formik>
+            <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                className={classes.modal}
+                open={open}
+                onClose={handleClose}
+                closeAfterTransition
+                BackdropComponent={Backdrop}
+                BackdropProps={{
+                    timeout: 500,
+                }}
+            >
+                <Fade in={open}>
+                    <div className={classes.paper}>
+                        <h3 className={classes.title} id="transition-modal-title">Thông báo</h3>
+                        <p className={classes.description} id="transition-modal-description">{err}</p>
+                        <button className={classes.button} onClick={handleClose}>Nhập lại</button>
+                    </div>
+                </Fade>
+            </Modal>
         </div>
     )
 }

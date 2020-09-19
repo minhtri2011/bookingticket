@@ -6,18 +6,14 @@ import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Route, Redirect } from 'react-router-dom';
-
+import { Route, Redirect, Link } from 'react-router-dom';
+import './style.scss';
 const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -62,25 +58,31 @@ function AdminLayout(props) {
     };
 
     const drawer = (
-        <div>
+        <div className="menuLeft">
             <div className={classes.toolbar} />
             <Divider />
             <List>
-                <ListItem button >
-                    <button>
-                        <InboxIcon />
-                    abc
-                </button>
-                </ListItem>
+                <Link to="/">
+                    <ListItem button >
+                        Trang chủ
+                    </ListItem>
+                </Link>
             </List>
             <Divider />
             <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
+                <Link to="/admin">
+                    <ListItem button >
+                        Quản lý user
                     </ListItem>
-                ))}
+                </Link>
+            </List>
+            <Divider />
+            <List>
+                <Link to="/admin/movie">
+                    <ListItem button >
+                        Quản lý phim
+                    </ListItem>
+                </Link>
             </List>
         </div>
     );

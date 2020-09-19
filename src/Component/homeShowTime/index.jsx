@@ -23,14 +23,14 @@ export default function HomeShowTime() {
         })
     }, [])
     return (
-        <div className="showTime">
+        <div id="showTime" className="showTime">
             <Tabs
                 defaultTab="BHDStar"
                 onChange={(tabId) => { }}
                 vertical
             >
                 <Grid container spacing={0}>
-                    <Grid item xs={2}>
+                    <Grid item md={2} sm={12}>
                         <TabList className="showTimeLeft">
                             {cinemaInfo.map((info, index) => {
                                 return <Tab key={index} tabFor={info.maHeThongRap} >
@@ -38,7 +38,7 @@ export default function HomeShowTime() {
                             })}
                         </TabList>
                     </Grid>
-                    <Grid item xs={10}>
+                    <Grid item md={10} sm={12}>
                         {movie.map((cinema, index) => {
                             return (
                                 <TabPanel key={index} tabId={cinema.maHeThongRap}>

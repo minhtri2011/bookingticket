@@ -19,7 +19,6 @@ import { Link } from 'react-router-dom';
 import './style.scss';
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
-
     return (
         <div
             role="tabpanel"
@@ -37,18 +36,16 @@ function TabPanel(props) {
     );
 }
 function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
+    const { onClick } = props;
     return (
-        <NavigateBeforeIcon className={className}
-            style={{ ...style, display: "block", fontSize: "100px", color: "grey" }}
+        <NavigateBeforeIcon className="btn_prev"
             onClick={onClick} />
     );
 }
 function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
+    const { onClick } = props;
     return (
-        <NavigateNextIcon className={className}
-            style={{ ...style, display: "block", fontSize: "100px", color: "grey" }}
+        <NavigateNextIcon className="btn_next"
             onClick={onClick} />
     );
 }
@@ -65,7 +62,6 @@ function a11yProps(index) {
 }
 const useStyles = makeStyles((theme) => ({
     root: {
-        // width: '70%',
         margin: '0 auto',
     },
     modal: {
@@ -94,6 +90,7 @@ export default function HomeListMovie() {
             console.log(err);
         })
     }, [])
+    // setting slick carousel
     const settings = {
         className: 'carousel',
         dotsClass: 'slick',
@@ -107,7 +104,22 @@ export default function HomeListMovie() {
         prevArrow: <SamplePrevArrow />,
         nextArrow: <SampleNextArrow />,
         dots: false,
-
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                }
+            }
+        ]
     };
     const renderDanhGia = (values) => {
         let content = [];
@@ -125,9 +137,8 @@ export default function HomeListMovie() {
     }
     const renderListMovie = () => {
         return (listMovie
-            .filter(movie =>movie.ngayKhoiChieu < dateTime)
+            .filter(movie => movie.ngayKhoiChieu < dateTime)
             .map((movie, index) => {
-            // if (movie.ngayKhoiChieu < dateTime) {
                 return (
                     <div key={index} className="card">
                         <div className="imgMovie">
@@ -137,6 +148,8 @@ export default function HomeListMovie() {
                                     setOpen(true)
                                     setState(movie.trailer)
                                 }} />
+                                <Link className="btn-play-bg" to={`/moviedetail/${movie.maPhim}`}>
+                                </Link>
                             </div>
                         </div>
                         <div className="hiddenButtonMovie">
@@ -157,14 +170,12 @@ export default function HomeListMovie() {
                         </div>
                     </div>
                 )
-            
-        }))
+            }))
     }
     const renderListNewMovie = () => {
         return listMovie
-        .filter(movie=>movie.ngayKhoiChieu > dateTime)
-        .map((movie, index) => {
-            // if (movie.ngayKhoiChieu > dateTime) {
+            .filter(movie => movie.ngayKhoiChieu > dateTime)
+            .map((movie, index) => {
                 return (
                     <div key={index} className="card">
                         <div className="imgMovie">
@@ -192,8 +203,8 @@ export default function HomeListMovie() {
                         </div>
                     </div>
                 )
-            
-        })
+
+            })
     }
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -206,7 +217,7 @@ export default function HomeListMovie() {
 
     return (
         <>
-            <div className={classes.root}>
+            <div className={classes.root} id="listMovie">
                 <AppBar className="appBarTabs" position="static">
                     <Tabs
                         value={value}
@@ -239,7 +250,7 @@ export default function HomeListMovie() {
                     timeout: 200,
                 }}>
                 <Fade in={open}>
-                    <iframe width="960" height="515" src={state} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen title="modal"></iframe>
+                    <iframe width="560" height="315" src={state} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen title="modal"></iframe>
                 </Fade>
             </Modal>
         </>

@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import { HashLink as Link } from 'react-router-hash-link';
 import './style.scss';
 
 const useStyles = makeStyles((theme) => ({
@@ -42,21 +43,21 @@ const MovieDetailHeader = (props) => {
     return (
         <div className="banner">
             <Grid container spacing={0}>
-                <Grid className="bannerLeft" item xs={4}>
+                <Grid className="bannerLeft" item xs={12} sm={4}>
                     <img src={props.movie.hinhAnh} alt={props.movie.hinhAnh} />
                 </Grid>
-                <Grid className="bannerRight" item xs={8}>
+                <Grid className="bannerRight" item xs={12} sm={8}>
                     <div>
                         <h3>{props.movie.tenPhim}</h3>
                         <p>{props.movie.moTa}</p>
-                        <p>Khởi chiếu: <Moment format="DD-MM-YYYY">{props.movie.ngayKhoiChieu}</Moment></p>
-                        <p className='rate'>Đánh giá: {renderDanhGia(props.movie.danhGia)}</p>
+                        <p className="rate"><span>Khởi chiếu: </span> <Moment format="DD-MM-YYYY">{props.movie.ngayKhoiChieu}</Moment></p>
+                        <p className='rate'><span>Đánh giá:</span> {renderDanhGia(props.movie.danhGia)}</p>
                         <div className="btn">
                             <button onClick={()=>{
                                 setOpen(true);
                                 setState(props.movie.trailer)
                             }} >Trailer</button>
-                            <button >Đặt vé</button>
+                            <Link to="#movieShowTime" smooth><button >Đặt vé</button></Link>
                         </div>
                     </div>
                 </Grid>
@@ -74,7 +75,7 @@ const MovieDetailHeader = (props) => {
                 }}
             >
                 <Fade in={open}>
-                    <iframe title="modal" width="960" height="515" src={state} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" ></iframe>
+                    <iframe title="modal" width="560" height="315" src={state} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" ></iframe>
                 </Fade>
             </Modal>
         </div>
