@@ -27,6 +27,9 @@ export default function Booking(props) {
         setOpen(true);
     };
     useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+    useEffect(() => {
         movieServices.getBooking(props.match.params.id)
             .then(res => {
                 setMovie(res.data)
