@@ -129,7 +129,8 @@ export default function Booking(props) {
         }
         userServices.buyTicket(info).then(res => {
             console.log(res.data);
-            window.location.reload();
+            alert('Đặt vé thành công');
+            window.location.replace('/');
         }).catch(err => {
             console.log(err);
         })
