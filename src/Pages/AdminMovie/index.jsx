@@ -115,8 +115,7 @@ export default function AdminMovie() {
                 alert('Xoá thành công')
             })
             .catch(error => {
-                console.log(error);
-                console.log(error.response);
+                alert(error.response.data);
             });
     };
     let handleAddMovie = (movie) => {

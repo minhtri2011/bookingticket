@@ -173,7 +173,7 @@ export default function HomeListMovie() {
             }))
     }
     const renderListNewMovie = () => {
-        return listMovie
+        return (listMovie
             .filter(movie => movie.ngayKhoiChieu > dateTime)
             .map((movie, index) => {
                 return (
@@ -185,26 +185,29 @@ export default function HomeListMovie() {
                                     setOpen(true)
                                     setState(movie.trailer)
                                 }} />
+                                <Link className="btn-play-bg" to={`/moviedetail/${movie.maPhim}`}>
+                                </Link>
                             </div>
                         </div>
-                        <div className="nameMovie">
-                            <span>{movie.tenPhim}</span>
-                        </div>
-                        <div className="lauchDate">
-                            <span>
-                                <Moment format="YYYY">{movie.ngayKhoiChieu}</Moment>
-                            </span>
-                        </div>
-                        <div className="rate">
-                            <span>{renderDanhGia(movie.danhGia)}</span>
-                        </div>
-                        <div className="btn-ticket">
-                            <Link to={`/moviedetail/${movie.maPhim}`}><button>Mua vé</button></Link>
+                        <div className="hiddenButtonMovie">
+                            <div className="nameMovie">
+                                <span>{movie.tenPhim}</span>
+                            </div>
+                            <div className="flexDate">
+                                <div className="lauchDate">
+                                    <Moment format="YYYY">{movie.ngayKhoiChieu}</Moment>
+                                </div>
+                                <div className="rate">
+                                    <span>{renderDanhGia(movie.danhGia)}</span>
+                                </div>
+                            </div>
+                            <div className="btn-ticket">
+                                <Link to={`/moviedetail/${movie.maPhim}`}><button>Mua vé</button></Link>
+                            </div>
                         </div>
                     </div>
                 )
-
-            })
+            }))
     }
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -234,7 +237,9 @@ export default function HomeListMovie() {
                     </Slider>
                 </TabPanel>
                 <TabPanel value={value} index={1} dir={theme.direction}>
-                    {renderListNewMovie()}
+                    <Slider {...settings}>
+                        {renderListNewMovie()}
+                    </Slider>
                 </TabPanel>
 
             </div>
