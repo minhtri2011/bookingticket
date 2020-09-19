@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react';
 import { memo } from 'react'
 import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs';
 import Grid from '@material-ui/core/Grid';
 import Moment from 'react-moment';
+import { HashLink as Link } from 'react-router-hash-link';
 import './style.scss';
 
 const MovieDetailShowTime = (props) => {
@@ -34,7 +35,9 @@ const MovieDetailShowTime = (props) => {
                                         <p>{branch.tenCumRap}</p>
                                         <div className="time">
                                             {branch.lichChieuPhim.map((movieInfo, index) => {
-                                                return <a key={index} target="_blank" rel="noopener noreferrer" className="timeItem" href={`/booking/${movieInfo.maLichChieu}`}><Moment format="DD/MM-hh:mm A">{movieInfo.ngayChieuGioChieu}</Moment></a>
+                                                return <Link key={index} className="timeItem" to={`/booking/${movieInfo.maLichChieu}`}>
+                                                    <Moment format="DD/MM-hh:mm A">{movieInfo.ngayChieuGioChieu}</Moment>
+                                                    </Link>
                                             })}
                                         </div>
                                     </div>

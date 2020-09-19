@@ -2,7 +2,7 @@
 import React, { Fragment, useEffect , Suspense, lazy } from 'react';
 // import logo from './logo.svg';
 import './App.scss';
-import { BrowserRouter,Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
 import { HomeTemplate } from './Template/Home';
 import { userLogin } from './Config/setting';
 import { useDispatch } from 'react-redux';
