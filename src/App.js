@@ -74,8 +74,6 @@ function App() {
   useEffect(() => {
     getUserName();
   }, [])
-
-
   return (
     <BrowserRouter>
       <Fragment>

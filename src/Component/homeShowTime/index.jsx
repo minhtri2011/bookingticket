@@ -3,8 +3,8 @@ import { movieServices } from '../../Services/movie';
 import Grid from '@material-ui/core/Grid';
 import './style.scss';
 import { Tabs, Tab, TabPanel, TabList } from 'react-web-tabs';
-import Moment from 'react-moment'
-
+import Moment from 'react-moment';
+import { HashLink as Link } from 'react-router-hash-link';
 export default function HomeShowTime() {
     let [movie, setMovie] = useState([]);
     let [cinemaInfo, setCinema] = useState([]);
@@ -70,9 +70,9 @@ export default function HomeShowTime() {
                                                                     </div>
                                                                     <div className="time">
                                                                         {listMovie.lstLichChieuTheoPhim.map((listTime, index) => {
-                                                                            return <a target="_blank" rel="noopener noreferrer" href={`/booking/${listTime.maLichChieu}`} key={index} className="timeItem">
+                                                                            return <Link to={`/booking/${listTime.maLichChieu}`} key={index} className="timeItem">
                                                                                 <Moment format="DD/MM-hh:mm A">{listTime.ngayChieuGioChieu}</Moment>
-                                                                            </a>
+                                                                            </Link>
                                                                         })}
                                                                     </div>
                                                                 </div>
